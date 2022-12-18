@@ -82,7 +82,7 @@ def about():
 
 @app.route("/result", methods=['POST'])
 def result():
-    list_years = ['2022', '2021', '2020', '2019', '2018', '2017']
+    list_years = ['2022', '2021', '2020', '2019', '2018', '2017'][::-1]
     list_most_popular = []
     list_most_loved = []
     list_most_dreaded = []
@@ -498,7 +498,7 @@ def result():
                 plt.xlabel('годы', color='blue')
                 plt.ylabel('% в сравнении', color='blue')
                 plt.legend(['Популярность', 'Интерес к продолжению', 'Разочарование', 'Заинтересованность'], loc=0,
-                           fontsize=5)
+                           fontsize=8)
                 buf = BytesIO()
                 fig.savefig(buf, format='png')
                 pictures.append(base64.b64encode(buf.getbuffer()).decode('ascii'))
@@ -584,4 +584,4 @@ def result():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=3131)
